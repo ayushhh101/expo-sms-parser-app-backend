@@ -15,7 +15,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 connectDB();
 
 // Routes
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/sms', require('./routes/sms'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/transactions', require('./routes/transactions'));
+app.use('/api/goals', require('./routes/goals'));
+app.use('/api/lifeevents', require('./routes/lifeevents'));
 
 // Health check route
 app.get('/', (req, res) => {
