@@ -21,6 +21,8 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/transactions', require('./routes/transactions'));
 app.use('/api/goals', require('./routes/goals'));
 app.use('/api/lifeevents', require('./routes/lifeevents'));
+app.use('/api/challenges', require('./routes/challenges'));
+app.use('/api/risks', require('./routes/risks'));
 
 // Health check route
 app.get('/', (req, res) => {

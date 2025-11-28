@@ -3,6 +3,7 @@ const User = require('./models/User');
 const Transaction = require('./models/Transaction');
 const Goal = require('./models/Goal');
 const LifeEvent = require('./models/LifeEvent');
+const Challenge = require('./models/Challenge');
 
 // MongoDB connection string - update with your actual connection
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://mumbaihacks:mumbaihacks@cluster0.fonvcex.mongodb.net/';
@@ -18,6 +19,7 @@ async function seedDatabase() {
     await Transaction.deleteMany({});
     await Goal.deleteMany({});
     await LifeEvent.deleteMany({});
+    await Challenge.deleteMany({});
     console.log('🗑️  Cleared existing data');
 
     // ========== USER DATA ==========
