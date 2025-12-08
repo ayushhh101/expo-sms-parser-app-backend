@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Transaction = require('../models/Transaction');
+const WeeklyBudget = require('../models/WeeklyBudget');
 
 // Get all transactions for a user
 router.get('/user/:userId', async (req, res) => {
@@ -40,6 +41,12 @@ router.get('/user/:userId', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const transaction = await Transaction.create(req.body);
+    
+    // Auto-update weekly budget if it's an expense transaction
+    if (transaction.type === 'expense' && transaction.userId) {
+      await updateWeeklyBudgetForTransaction(transaction);
+    }
+    
     res.status(201).json({
       success: true,
       transaction
@@ -85,6 +92,12 @@ router.post("/manual", async (req, res) => {
     }
 
     const saved = await Transaction.create(body);
+    
+    // Auto-update weekly budget if it's an expense transaction
+    if (saved.type === 'expense' && saved.userId) {
+      await updateWeeklyBudgetForTransaction(saved);
+    }
+    
     res.status(201).json({ ok: true, saved });
   } 
   catch(error) 
@@ -134,5 +147,82 @@ router.get("/manual-logs", async (req, res) => {
   }
 });
 
+
+// Helper function to update weekly budget when transaction is added
+async function updateWeeklyBudgetForTransaction(transaction) {
+  try {
+    const weekDates = WeeklyBudget.getWeekDates(transaction.timestamp);
+    
+    // Find or create weekly budget for the transaction's week
+    let budget = await WeeklyBudget.findOne({
+      userId: transaction.userId,
+      weekStartDate: weekDates.weekStartDate
+    });
+    
+    if (!budget) {
+      // Create new budget if it doesn't exist
+      budget = new WeeklyBudget({
+        userId: transaction.userId,
+        ...weekDates
+      });
+    }
+    
+    // Enhanced categorization with merchant and description
+    const budgetCategory = WeeklyBudget.mapTransactionCategory(
+      transaction.category, 
+      transaction.merchant, 
+      transaction.notes || transaction.description || ''
+    );
+    
+    // Update the specific category with new transaction
+    if (budget.categories[budgetCategory]) {
+      budget.categories[budgetCategory].currentSpentPaise += transaction.amountPaise;
+      budget.categories[budgetCategory].transactionCount += 1;
+    }
+    
+    // Update transaction summary
+    budget.transactionSummary.totalTransactions += 1;
+    budget.transactionSummary.expenseTransactions += 1;
+    
+    // Recalculate average transaction amount
+    const allTransactions = await Transaction.find({
+      userId: transaction.userId,
+      type: 'expense',
+      timestamp: {
+        $gte: weekDates.weekStartDate,
+        $lte: weekDates.weekEndDate
+      }
+    });
+    
+    const totalSpent = allTransactions.reduce((sum, t) => sum + t.amountPaise, 0);
+    budget.transactionSummary.avgTransactionPaise = allTransactions.length > 0 ? 
+      Math.round(totalSpent / allTransactions.length) : 0;
+    
+    // Update largest expense if this transaction is larger
+    if (transaction.amountPaise > budget.transactionSummary.largestExpensePaise) {
+      budget.transactionSummary.largestExpensePaise = transaction.amountPaise;
+    }
+    
+    // Update most active category
+    const categoryCounts = {};
+    allTransactions.forEach(t => {
+      const category = WeeklyBudget.mapTransactionCategory(t.category, t.merchant, t.notes);
+      categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+    });
+    
+    const mostActiveCategory = Object.entries(categoryCounts)
+      .sort(([,a], [,b]) => b - a)[0]?.[0] || 'food';
+    budget.transactionSummary.mostActiveCategory = mostActiveCategory;
+    
+    // Save budget (will trigger pre-save middleware for risk calculations)
+    await budget.save();
+    
+    console.log(`📊 Updated weekly budget for user ${transaction.userId} - Category: ${budgetCategory}, Amount: ₹${transaction.amountPaise / 100}`);
+    
+  } catch (error) {
+    console.error('Error updating weekly budget:', error);
+    // Don't throw error to avoid breaking transaction creation
+  }
+}
 
 module.exports = router;

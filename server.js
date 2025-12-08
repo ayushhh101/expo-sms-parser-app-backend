@@ -23,6 +23,7 @@ app.use('/api/goals', require('./routes/goals'));
 app.use('/api/lifeevents', require('./routes/lifeevents'));
 app.use('/api/challenges', require('./routes/challenges'));
 app.use('/api/risks', require('./routes/risks'));
+app.use('/api/weekly-budget', require('./routes/weeklyBudget'));
 
 // Health check route
 app.get('/', (req, res) => {
