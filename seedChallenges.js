@@ -14,7 +14,7 @@ async function seedChallenges() {
     console.log('Cleared existing challenges');
 
     const userId = 'usr_rahul_001'; // From your seed data
-    const today = new Date();
+    const today = new Date('2024-12-08'); // Current week
     
     // Today's challenges (matching your UI)
     const todaysChallenges = [

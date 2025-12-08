@@ -14,7 +14,7 @@ async function seedRiskPredictions() {
     console.log('Cleared existing risk predictions');
 
     const userId = 'usr_rahul_001';
-    const now = new Date();
+    const now = new Date('2024-12-08'); // Current week
     const validUntil = new Date(now.getTime() + 24 * 60 * 60 * 1000); // 24 hours from now
 
     // Sample risk prediction matching your schema

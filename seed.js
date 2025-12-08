@@ -91,7 +91,7 @@ async function seedDatabase() {
       },
 
       createdAt: new Date("2024-11-01T10:30:00"),
-      updatedAt: new Date("2024-11-17T08:00:00")
+      updatedAt: new Date("2024-12-08T08:00:00")
     };
 
     const user = await User.create(userData);
@@ -109,7 +109,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Local Chai Stall",
         method: "cash",
-        timestamp: new Date("2024-11-17T15:15:00"),
+        timestamp: new Date("2024-12-08T15:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -118,8 +118,8 @@ async function seedDatabase() {
         },
         notes: "Morning chai and biscuit",
         synced: true,
-        createdAt: new Date("2024-11-17T15:15:00"),
-        updatedAt: new Date("2024-11-17T15:15:00")
+        createdAt: new Date("2024-12-08T15:15:00"),
+        updatedAt: new Date("2024-12-08T15:15:00")
       },
       {
         txId: "tx_00002",
@@ -131,7 +131,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Annapurna Mess",
         method: "upi",
-        timestamp: new Date("2024-11-17T19:30:00"),
+        timestamp: new Date("2024-12-08T19:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -140,8 +140,8 @@ async function seedDatabase() {
         },
         notes: "Lunch thali",
         synced: true,
-        createdAt: new Date("2024-11-17T19:30:00"),
-        updatedAt: new Date("2024-11-17T19:30:00")
+        createdAt: new Date("2024-12-08T19:30:00"),
+        updatedAt: new Date("2024-12-08T19:30:00")
       },
       {
         txId: "tx_00003",
@@ -153,7 +153,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Street Vendor",
         method: "cash",
-        timestamp: new Date("2024-11-17T23:45:00"),
+        timestamp: new Date("2024-12-08T23:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -162,8 +162,8 @@ async function seedDatabase() {
         },
         notes: "Evening chai",
         synced: true,
-        createdAt: new Date("2024-11-17T23:45:00"),
-        updatedAt: new Date("2024-11-17T23:45:00")
+        createdAt: new Date("2024-12-08T23:45:00"),
+        updatedAt: new Date("2024-12-08T23:45:00")
       },
       {
         txId: "tx_00004",
@@ -175,7 +175,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Home cooking",
         method: "cash",
-        timestamp: new Date("2024-11-18T02:30:00"),
+        timestamp: new Date("2024-12-07T02:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -184,8 +184,8 @@ async function seedDatabase() {
         },
         notes: "Dinner groceries",
         synced: true,
-        createdAt: new Date("2024-11-18T02:30:00"),
-        updatedAt: new Date("2024-11-18T02:30:00")
+        createdAt: new Date("2024-12-07T02:30:00"),
+        updatedAt: new Date("2024-12-07T02:30:00")
       },
       {
         txId: "tx_00005",
@@ -197,7 +197,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Udupi Cafe",
         method: "cash",
-        timestamp: new Date("2024-11-18T12:45:00"),
+        timestamp: new Date("2024-12-07T12:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -206,8 +206,8 @@ async function seedDatabase() {
         },
         notes: "Morning breakfast",
         synced: true,
-        createdAt: new Date("2024-11-18T12:45:00"),
-        updatedAt: new Date("2024-11-18T12:45:00")
+        createdAt: new Date("2024-12-07T12:45:00"),
+        updatedAt: new Date("2024-12-07T12:45:00")
       },
       {
         txId: "tx_00006",
@@ -219,7 +219,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "HP Petrol Pump",
         method: "upi",
-        timestamp: new Date("2024-11-18T13:20:00"),
+        timestamp: new Date("2024-12-07T13:20:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -228,8 +228,8 @@ async function seedDatabase() {
         },
         notes: "Bike fuel",
         synced: true,
-        createdAt: new Date("2024-11-18T13:20:00"),
-        updatedAt: new Date("2024-11-18T13:20:00")
+        createdAt: new Date("2024-12-07T13:20:00"),
+        updatedAt: new Date("2024-12-07T13:20:00")
       },
       {
         txId: "tx_00007",
@@ -241,7 +241,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-18T18:15:00"),
+        timestamp: new Date("2024-12-07T18:15:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -250,8 +250,8 @@ async function seedDatabase() {
         },
         notes: "12 deliveries morning shift",
         synced: true,
-        createdAt: new Date("2024-11-18T18:15:00"),
-        updatedAt: new Date("2024-11-18T18:15:00")
+        createdAt: new Date("2024-12-07T18:15:00"),
+        updatedAt: new Date("2024-12-07T18:15:00")
       },
       {
         txId: "tx_00008",
@@ -263,7 +263,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Punjabi Dhaba",
         method: "cash",
-        timestamp: new Date("2024-11-18T19:45:00"),
+        timestamp: new Date("2024-12-07T19:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -272,8 +272,8 @@ async function seedDatabase() {
         },
         notes: "Lunch",
         synced: true,
-        createdAt: new Date("2024-11-18T19:45:00"),
-        updatedAt: new Date("2024-11-18T19:45:00")
+        createdAt: new Date("2024-12-07T19:45:00"),
+        updatedAt: new Date("2024-12-07T19:45:00")
       },
       {
         txId: "tx_00009",
@@ -285,7 +285,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Tea Stall",
         method: "cash",
-        timestamp: new Date("2024-11-18T23:30:00"),
+        timestamp: new Date("2024-12-07T23:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -294,8 +294,8 @@ async function seedDatabase() {
         },
         notes: "Evening tea break",
         synced: true,
-        createdAt: new Date("2024-11-18T23:30:00"),
-        updatedAt: new Date("2024-11-18T23:30:00")
+        createdAt: new Date("2024-12-07T23:30:00"),
+        updatedAt: new Date("2024-12-07T23:30:00")
       },
       {
         txId: "tx_00010",
@@ -307,7 +307,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-19T02:45:00"),
+        timestamp: new Date("2024-12-06T02:45:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -316,8 +316,8 @@ async function seedDatabase() {
         },
         notes: "18 deliveries evening shift",
         synced: true,
-        createdAt: new Date("2024-11-19T02:45:00"),
-        updatedAt: new Date("2024-11-19T02:45:00")
+        createdAt: new Date("2024-12-06T02:45:00"),
+        updatedAt: new Date("2024-12-06T02:45:00")
       },
       {
         txId: "tx_00011",
@@ -329,7 +329,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Biryani Point",
         method: "upi",
-        timestamp: new Date("2024-11-19T03:30:00"),
+        timestamp: new Date("2024-12-06T03:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -338,8 +338,8 @@ async function seedDatabase() {
         },
         notes: "Dinner",
         synced: true,
-        createdAt: new Date("2024-11-19T03:30:00"),
-        updatedAt: new Date("2024-11-19T03:30:00")
+        createdAt: new Date("2024-12-06T03:30:00"),
+        updatedAt: new Date("2024-12-06T03:30:00")
       },
       {
         txId: "tx_00012",
@@ -351,7 +351,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "Indian Oil",
         method: "cash",
-        timestamp: new Date("2024-11-19T04:10:00"),
+        timestamp: new Date("2024-12-06T04:10:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -360,8 +360,8 @@ async function seedDatabase() {
         },
         notes: "Late fuel top-up",
         synced: true,
-        createdAt: new Date("2024-11-19T04:10:00"),
-        updatedAt: new Date("2024-11-19T04:10:00")
+        createdAt: new Date("2024-12-06T04:10:00"),
+        updatedAt: new Date("2024-12-06T04:10:00")
       },
       {
         txId: "tx_00013",
@@ -373,7 +373,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "South Indian Cafe",
         method: "cash",
-        timestamp: new Date("2024-11-19T12:30:00"),
+        timestamp: new Date("2024-12-06T12:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -382,8 +382,8 @@ async function seedDatabase() {
         },
         notes: "Idli breakfast",
         synced: true,
-        createdAt: new Date("2024-11-19T12:30:00"),
-        updatedAt: new Date("2024-11-19T12:30:00")
+        createdAt: new Date("2024-12-06T12:30:00"),
+        updatedAt: new Date("2024-12-06T12:30:00")
       },
       {
         txId: "tx_00014",
@@ -395,7 +395,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "Bharat Petroleum",
         method: "upi",
-        timestamp: new Date("2024-11-19T13:00:00"),
+        timestamp: new Date("2024-12-06T13:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -404,8 +404,8 @@ async function seedDatabase() {
         },
         notes: "Full tank",
         synced: true,
-        createdAt: new Date("2024-11-19T13:00:00"),
-        updatedAt: new Date("2024-11-19T13:00:00")
+        createdAt: new Date("2024-12-06T13:00:00"),
+        updatedAt: new Date("2024-12-06T13:00:00")
       },
       {
         txId: "tx_00015",
@@ -417,7 +417,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-19T17:50:00"),
+        timestamp: new Date("2024-12-06T17:50:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -426,8 +426,8 @@ async function seedDatabase() {
         },
         notes: "14 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-19T17:50:00"),
-        updatedAt: new Date("2024-11-19T17:50:00")
+        createdAt: new Date("2024-12-06T17:50:00"),
+        updatedAt: new Date("2024-12-06T17:50:00")
       },
       {
         txId: "tx_00016",
@@ -439,7 +439,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Meals on Wheels",
         method: "upi",
-        timestamp: new Date("2024-11-19T19:20:00"),
+        timestamp: new Date("2024-12-06T19:20:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -448,8 +448,8 @@ async function seedDatabase() {
         },
         notes: "Lunch combo",
         synced: true,
-        createdAt: new Date("2024-11-19T19:20:00"),
-        updatedAt: new Date("2024-11-19T19:20:00")
+        createdAt: new Date("2024-12-06T19:20:00"),
+        updatedAt: new Date("2024-12-06T19:20:00")
       },
       {
         txId: "tx_00017",
@@ -461,7 +461,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Chai Corner",
         method: "cash",
-        timestamp: new Date("2024-11-19T22:45:00"),
+        timestamp: new Date("2024-12-06T22:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -470,8 +470,8 @@ async function seedDatabase() {
         },
         notes: "Tea and samosa",
         synced: true,
-        createdAt: new Date("2024-11-19T22:45:00"),
-        updatedAt: new Date("2024-11-19T22:45:00")
+        createdAt: new Date("2024-12-06T22:45:00"),
+        updatedAt: new Date("2024-12-06T22:45:00")
       },
       {
         txId: "tx_00018",
@@ -483,7 +483,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-20T01:30:00"),
+        timestamp: new Date("2024-12-05T01:30:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -492,8 +492,8 @@ async function seedDatabase() {
         },
         notes: "21 deliveries dinner rush",
         synced: true,
-        createdAt: new Date("2024-11-20T01:30:00"),
-        updatedAt: new Date("2024-11-20T01:30:00")
+        createdAt: new Date("2024-12-05T01:30:00"),
+        updatedAt: new Date("2024-12-05T01:30:00")
       },
       {
         txId: "tx_00019",
@@ -505,7 +505,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Chinese Corner",
         method: "upi",
-        timestamp: new Date("2024-11-20T03:15:00"),
+        timestamp: new Date("2024-12-05T03:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -514,8 +514,8 @@ async function seedDatabase() {
         },
         notes: "Fried rice dinner",
         synced: true,
-        createdAt: new Date("2024-11-20T03:15:00"),
-        updatedAt: new Date("2024-11-20T03:15:00")
+        createdAt: new Date("2024-12-05T03:15:00"),
+        updatedAt: new Date("2024-12-05T03:15:00")
       },
       {
         txId: "tx_00020",
@@ -527,7 +527,7 @@ async function seedDatabase() {
         category: "entertainment_other",
         merchant: "Mobile Shop",
         method: "upi",
-        timestamp: new Date("2024-11-20T04:30:00"),
+        timestamp: new Date("2024-12-05T04:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -536,8 +536,8 @@ async function seedDatabase() {
         },
         notes: "Phone recharge ₹50",
         synced: true,
-        createdAt: new Date("2024-11-20T04:30:00"),
-        updatedAt: new Date("2024-11-20T04:30:00")
+        createdAt: new Date("2024-12-05T04:30:00"),
+        updatedAt: new Date("2024-12-05T04:30:00")
       },
       {
         txId: "tx_00021",
@@ -549,7 +549,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Breakfast Point",
         method: "cash",
-        timestamp: new Date("2024-11-20T12:45:00"),
+        timestamp: new Date("2024-12-05T12:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -558,8 +558,8 @@ async function seedDatabase() {
         },
         notes: "Poha and tea",
         synced: true,
-        createdAt: new Date("2024-11-20T12:45:00"),
-        updatedAt: new Date("2024-11-20T12:45:00")
+        createdAt: new Date("2024-12-05T12:45:00"),
+        updatedAt: new Date("2024-12-05T12:45:00")
       },
       {
         txId: "tx_00022",
@@ -571,7 +571,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "HP Petrol",
         method: "cash",
-        timestamp: new Date("2024-11-20T13:30:00"),
+        timestamp: new Date("2024-12-05T13:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -580,8 +580,8 @@ async function seedDatabase() {
         },
         notes: "Fuel",
         synced: true,
-        createdAt: new Date("2024-11-20T13:30:00"),
-        updatedAt: new Date("2024-11-20T13:30:00")
+        createdAt: new Date("2024-12-05T13:30:00"),
+        updatedAt: new Date("2024-12-05T13:30:00")
       },
       {
         txId: "tx_00023",
@@ -593,7 +593,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-20T17:45:00"),
+        timestamp: new Date("2024-12-05T17:45:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -602,8 +602,8 @@ async function seedDatabase() {
         },
         notes: "11 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-20T17:45:00"),
-        updatedAt: new Date("2024-11-20T17:45:00")
+        createdAt: new Date("2024-12-05T17:45:00"),
+        updatedAt: new Date("2024-12-05T17:45:00")
       },
       {
         txId: "tx_00024",
@@ -615,7 +615,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Dosa Plaza",
         method: "cash",
-        timestamp: new Date("2024-11-20T19:00:00"),
+        timestamp: new Date("2024-12-05T19:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -624,8 +624,8 @@ async function seedDatabase() {
         },
         notes: "Masala dosa lunch",
         synced: true,
-        createdAt: new Date("2024-11-20T19:00:00"),
-        updatedAt: new Date("2024-11-20T19:00:00")
+        createdAt: new Date("2024-12-05T19:00:00"),
+        updatedAt: new Date("2024-12-05T19:00:00")
       },
       {
         txId: "tx_00025",
@@ -637,7 +637,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Snack Stall",
         method: "cash",
-        timestamp: new Date("2024-11-20T23:00:00"),
+        timestamp: new Date("2024-12-05T23:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -646,8 +646,8 @@ async function seedDatabase() {
         },
         notes: "Vada pav and chai",
         synced: true,
-        createdAt: new Date("2024-11-20T23:00:00"),
-        updatedAt: new Date("2024-11-20T23:00:00")
+        createdAt: new Date("2024-12-05T23:00:00"),
+        updatedAt: new Date("2024-12-05T23:00:00")
       },
       {
         txId: "tx_00026",
@@ -659,7 +659,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-21T02:00:00"),
+        timestamp: new Date("2024-12-04T02:00:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -668,8 +668,8 @@ async function seedDatabase() {
         },
         notes: "19 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-21T02:00:00"),
-        updatedAt: new Date("2024-11-21T02:00:00")
+        createdAt: new Date("2024-12-04T02:00:00"),
+        updatedAt: new Date("2024-12-04T02:00:00")
       },
       {
         txId: "tx_00027",
@@ -681,7 +681,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Tandoor House",
         method: "upi",
-        timestamp: new Date("2024-11-21T03:45:00"),
+        timestamp: new Date("2024-12-04T03:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -690,8 +690,8 @@ async function seedDatabase() {
         },
         notes: "Roti sabzi",
         synced: true,
-        createdAt: new Date("2024-11-21T03:45:00"),
-        updatedAt: new Date("2024-11-21T03:45:00")
+        createdAt: new Date("2024-12-04T03:45:00"),
+        updatedAt: new Date("2024-12-04T03:45:00")
       },
       {
         txId: "tx_00028",
@@ -703,7 +703,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "Shell Petrol",
         method: "upi",
-        timestamp: new Date("2024-11-21T04:30:00"),
+        timestamp: new Date("2024-12-04T04:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -712,8 +712,8 @@ async function seedDatabase() {
         },
         notes: "End of day fuel",
         synced: true,
-        createdAt: new Date("2024-11-21T04:30:00"),
-        updatedAt: new Date("2024-11-21T04:30:00")
+        createdAt: new Date("2024-12-04T04:30:00"),
+        updatedAt: new Date("2024-12-04T04:30:00")
       },
       {
         txId: "tx_00029",
@@ -725,7 +725,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Filter Coffee Shop",
         method: "cash",
-        timestamp: new Date("2024-11-21T12:30:00"),
+        timestamp: new Date("2024-12-04T12:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -734,8 +734,8 @@ async function seedDatabase() {
         },
         notes: "Coffee and vada",
         synced: true,
-        createdAt: new Date("2024-11-21T12:30:00"),
-        updatedAt: new Date("2024-11-21T12:30:00")
+        createdAt: new Date("2024-12-04T12:30:00"),
+        updatedAt: new Date("2024-12-04T12:30:00")
       },
       {
         txId: "tx_00030",
@@ -747,7 +747,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "Indian Oil",
         method: "upi",
-        timestamp: new Date("2024-11-21T13:15:00"),
+        timestamp: new Date("2024-12-04T13:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -756,8 +756,8 @@ async function seedDatabase() {
         },
         notes: "Morning fuel",
         synced: true,
-        createdAt: new Date("2024-11-21T13:15:00"),
-        updatedAt: new Date("2024-11-21T13:15:00")
+        createdAt: new Date("2024-12-04T13:15:00"),
+        updatedAt: new Date("2024-12-04T13:15:00")
       },
       {
         txId: "tx_00031",
@@ -769,7 +769,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-21T18:00:00"),
+        timestamp: new Date("2024-12-04T18:00:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -778,8 +778,8 @@ async function seedDatabase() {
         },
         notes: "15 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-21T18:00:00"),
-        updatedAt: new Date("2024-11-21T18:00:00")
+        createdAt: new Date("2024-12-04T18:00:00"),
+        updatedAt: new Date("2024-12-04T18:00:00")
       },
       {
         txId: "tx_00032",
@@ -791,7 +791,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Paratha Junction",
         method: "upi",
-        timestamp: new Date("2024-11-21T19:30:00"),
+        timestamp: new Date("2024-12-04T19:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -800,8 +800,8 @@ async function seedDatabase() {
         },
         notes: "Aloo paratha lunch",
         synced: true,
-        createdAt: new Date("2024-11-21T19:30:00"),
-        updatedAt: new Date("2024-11-21T19:30:00")
+        createdAt: new Date("2024-12-04T19:30:00"),
+        updatedAt: new Date("2024-12-04T19:30:00")
       },
       {
         txId: "tx_00033",
@@ -813,7 +813,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Chai Shop",
         method: "cash",
-        timestamp: new Date("2024-11-21T23:15:00"),
+        timestamp: new Date("2024-12-04T23:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -822,8 +822,8 @@ async function seedDatabase() {
         },
         notes: "Evening chai",
         synced: true,
-        createdAt: new Date("2024-11-21T23:15:00"),
-        updatedAt: new Date("2024-11-21T23:15:00")
+        createdAt: new Date("2024-12-04T23:15:00"),
+        updatedAt: new Date("2024-12-04T23:15:00")
       },
       {
         txId: "tx_00034",
@@ -835,7 +835,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-22T02:30:00"),
+        timestamp: new Date("2024-12-03T02:30:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -844,8 +844,8 @@ async function seedDatabase() {
         },
         notes: "22 deliveries peak",
         synced: true,
-        createdAt: new Date("2024-11-22T02:30:00"),
-        updatedAt: new Date("2024-11-22T02:30:00")
+        createdAt: new Date("2024-12-03T02:30:00"),
+        updatedAt: new Date("2024-12-03T02:30:00")
       },
       {
         txId: "tx_00035",
@@ -857,7 +857,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Mughlai Restaurant",
         method: "upi",
-        timestamp: new Date("2024-11-22T03:50:00"),
+        timestamp: new Date("2024-12-03T03:50:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -866,8 +866,8 @@ async function seedDatabase() {
         },
         notes: "Chicken curry dinner",
         synced: true,
-        createdAt: new Date("2024-11-22T03:50:00"),
-        updatedAt: new Date("2024-11-22T03:50:00")
+        createdAt: new Date("2024-12-03T03:50:00"),
+        updatedAt: new Date("2024-12-03T03:50:00")
       },
       {
         txId: "tx_00036",
@@ -879,7 +879,7 @@ async function seedDatabase() {
         category: "entertainment_other",
         merchant: "Paan Shop",
         method: "cash",
-        timestamp: new Date("2024-11-22T05:00:00"),
+        timestamp: new Date("2024-12-03T05:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -888,8 +888,8 @@ async function seedDatabase() {
         },
         notes: "Paan",
         synced: true,
-        createdAt: new Date("2024-11-22T05:00:00"),
-        updatedAt: new Date("2024-11-22T05:00:00")
+        createdAt: new Date("2024-12-03T05:00:00"),
+        updatedAt: new Date("2024-12-03T05:00:00")
       },
       {
         txId: "tx_00037",
@@ -901,7 +901,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Breakfast Corner",
         method: "cash",
-        timestamp: new Date("2024-11-22T12:45:00"),
+        timestamp: new Date("2024-12-03T12:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -910,8 +910,8 @@ async function seedDatabase() {
         },
         notes: "Upma and coffee",
         synced: true,
-        createdAt: new Date("2024-11-22T12:45:00"),
-        updatedAt: new Date("2024-11-22T12:45:00")
+        createdAt: new Date("2024-12-03T12:45:00"),
+        updatedAt: new Date("2024-12-03T12:45:00")
       },
       {
         txId: "tx_00038",
@@ -923,7 +923,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "Bharat Petroleum",
         method: "upi",
-        timestamp: new Date("2024-11-22T13:30:00"),
+        timestamp: new Date("2024-12-03T13:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -932,8 +932,8 @@ async function seedDatabase() {
         },
         notes: "Full tank for weekend",
         synced: true,
-        createdAt: new Date("2024-11-22T13:30:00"),
-        updatedAt: new Date("2024-11-22T13:30:00")
+        createdAt: new Date("2024-12-03T13:30:00"),
+        updatedAt: new Date("2024-12-03T13:30:00")
       },
       {
         txId: "tx_00039",
@@ -945,7 +945,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-22T17:30:00"),
+        timestamp: new Date("2024-12-03T17:30:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -954,8 +954,8 @@ async function seedDatabase() {
         },
         notes: "13 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-22T17:30:00"),
-        updatedAt: new Date("2024-11-22T17:30:00")
+        createdAt: new Date("2024-12-03T17:30:00"),
+        updatedAt: new Date("2024-12-03T17:30:00")
       },
       {
         txId: "tx_00040",
@@ -967,7 +967,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Biryani House",
         method: "upi",
-        timestamp: new Date("2024-11-22T19:15:00"),
+        timestamp: new Date("2024-12-03T19:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -976,8 +976,8 @@ async function seedDatabase() {
         },
         notes: "Mini biryani",
         synced: true,
-        createdAt: new Date("2024-11-22T19:15:00"),
-        updatedAt: new Date("2024-11-22T19:15:00")
+        createdAt: new Date("2024-12-03T19:15:00"),
+        updatedAt: new Date("2024-12-03T19:15:00")
       },
       {
         txId: "tx_00041",
@@ -989,7 +989,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Tea Stall",
         method: "cash",
-        timestamp: new Date("2024-11-22T23:30:00"),
+        timestamp: new Date("2024-12-03T23:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -998,8 +998,8 @@ async function seedDatabase() {
         },
         notes: "Chai pakoda",
         synced: true,
-        createdAt: new Date("2024-11-22T23:30:00"),
-        updatedAt: new Date("2024-11-22T23:30:00")
+        createdAt: new Date("2024-12-03T23:30:00"),
+        updatedAt: new Date("2024-12-03T23:30:00")
       },
       {
         txId: "tx_00042",
@@ -1011,7 +1011,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-23T03:00:00"),
+        timestamp: new Date("2024-12-02T03:00:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -1020,8 +1020,8 @@ async function seedDatabase() {
         },
         notes: "24 deliveries Friday rush",
         synced: true,
-        createdAt: new Date("2024-11-23T03:00:00"),
-        updatedAt: new Date("2024-11-23T03:00:00")
+        createdAt: new Date("2024-12-02T03:00:00"),
+        updatedAt: new Date("2024-12-02T03:00:00")
       },
       {
         txId: "tx_00043",
@@ -1033,7 +1033,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Pizza Corner",
         method: "upi",
-        timestamp: new Date("2024-11-23T04:30:00"),
+        timestamp: new Date("2024-12-02T04:30:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1042,8 +1042,8 @@ async function seedDatabase() {
         },
         notes: "Pizza treat",
         synced: true,
-        createdAt: new Date("2024-11-23T04:30:00"),
-        updatedAt: new Date("2024-11-23T04:30:00")
+        createdAt: new Date("2024-12-02T04:30:00"),
+        updatedAt: new Date("2024-12-02T04:30:00")
       },
       {
         txId: "tx_00044",
@@ -1055,7 +1055,7 @@ async function seedDatabase() {
         category: "entertainment_other",
         merchant: "Mobile Gaming",
         method: "upi",
-        timestamp: new Date("2024-11-23T05:15:00"),
+        timestamp: new Date("2024-12-02T05:15:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1064,8 +1064,8 @@ async function seedDatabase() {
         },
         notes: "Game credits",
         synced: true,
-        createdAt: new Date("2024-11-23T05:15:00"),
-        updatedAt: new Date("2024-11-23T05:15:00")
+        createdAt: new Date("2024-12-02T05:15:00"),
+        updatedAt: new Date("2024-12-02T05:15:00")
       },
       {
         txId: "tx_00045",
@@ -1077,7 +1077,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "South Indian",
         method: "cash",
-        timestamp: new Date("2024-11-23T13:00:00"),
+        timestamp: new Date("2024-12-02T13:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1086,8 +1086,8 @@ async function seedDatabase() {
         },
         notes: "Dosa breakfast",
         synced: true,
-        createdAt: new Date("2024-11-23T13:00:00"),
-        updatedAt: new Date("2024-11-23T13:00:00")
+        createdAt: new Date("2024-12-02T13:00:00"),
+        updatedAt: new Date("2024-12-02T13:00:00")
       },
       {
         txId: "tx_00046",
@@ -1099,7 +1099,7 @@ async function seedDatabase() {
         category: "fuel",
         merchant: "HP Petrol",
         method: "upi",
-        timestamp: new Date("2024-11-23T13:45:00"),
+        timestamp: new Date("2024-12-02T13:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1108,8 +1108,8 @@ async function seedDatabase() {
         },
         notes: "Fuel",
         synced: true,
-        createdAt: new Date("2024-11-23T13:45:00"),
-        updatedAt: new Date("2024-11-23T13:45:00")
+        createdAt: new Date("2024-12-02T13:45:00"),
+        updatedAt: new Date("2024-12-02T13:45:00")
       },
       {
         txId: "tx_00047",
@@ -1121,7 +1121,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Swiggy",
         method: "wallet",
-        timestamp: new Date("2024-11-23T18:30:00"),
+        timestamp: new Date("2024-12-02T18:30:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -1130,8 +1130,8 @@ async function seedDatabase() {
         },
         notes: "16 deliveries",
         synced: true,
-        createdAt: new Date("2024-11-23T18:30:00"),
-        updatedAt: new Date("2024-11-23T18:30:00")
+        createdAt: new Date("2024-12-02T18:30:00"),
+        updatedAt: new Date("2024-12-02T18:30:00")
       },
       {
         txId: "tx_00048",
@@ -1143,7 +1143,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Family Restaurant",
         method: "upi",
-        timestamp: new Date("2024-11-23T20:00:00"),
+        timestamp: new Date("2024-12-02T20:00:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1152,8 +1152,8 @@ async function seedDatabase() {
         },
         notes: "Weekend special lunch",
         synced: true,
-        createdAt: new Date("2024-11-23T20:00:00"),
-        updatedAt: new Date("2024-11-23T20:00:00")
+        createdAt: new Date("2024-12-02T20:00:00"),
+        updatedAt: new Date("2024-12-02T20:00:00")
       },
       {
         txId: "tx_00049",
@@ -1165,7 +1165,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "Street Chai",
         method: "cash",
-        timestamp: new Date("2024-11-23T23:45:00"),
+        timestamp: new Date("2024-12-02T23:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1174,8 +1174,8 @@ async function seedDatabase() {
         },
         notes: "Chai break",
         synced: true,
-        createdAt: new Date("2024-11-23T23:45:00"),
-        updatedAt: new Date("2024-11-23T23:45:00")
+        createdAt: new Date("2024-12-02T23:45:00"),
+        updatedAt: new Date("2024-12-02T23:45:00")
       },
       {
         txId: "tx_00050",
@@ -1187,7 +1187,7 @@ async function seedDatabase() {
         category: "gig_payout",
         merchant: "Zomato",
         method: "wallet",
-        timestamp: new Date("2024-11-24T03:30:00"),
+        timestamp: new Date("2024-12-01T03:30:00"),
         source: "sms",
         parserMeta: {
           parser: "sms",
@@ -1196,8 +1196,8 @@ async function seedDatabase() {
         },
         notes: "23 deliveries Saturday dinner",
         synced: true,
-        createdAt: new Date("2024-11-24T03:30:00"),
-        updatedAt: new Date("2024-11-24T03:30:00")
+        createdAt: new Date("2024-12-01T03:30:00"),
+        updatedAt: new Date("2024-12-01T03:30:00")
       },
       {
         txId: "tx_00051",
@@ -1209,7 +1209,7 @@ async function seedDatabase() {
         category: "food",
         merchant: "North Indian",
         method: "upi",
-        timestamp: new Date("2024-11-24T04:45:00"),
+        timestamp: new Date("2024-12-01T04:45:00"),
         source: "manual",
         parserMeta: {
           parser: "manual",
@@ -1218,8 +1218,8 @@ async function seedDatabase() {
         },
         notes: "Paneer dinner",
         synced: true,
-        createdAt: new Date("2024-11-24T04:45:00"),
-        updatedAt: new Date("2024-11-24T04:45:00")
+        createdAt: new Date("2024-12-01T04:45:00"),
+        updatedAt: new Date("2024-12-01T04:45:00")
       }
     ];
 
@@ -1245,7 +1245,7 @@ async function seedDatabase() {
       gapPaise: 0,
       autoAdjustEnabled: true,
       createdAt: new Date("2024-11-10T14:30:00"),
-      updatedAt: new Date("2024-11-23T08:00:00")
+      updatedAt: new Date("2024-12-02T08:00:00")
     };
 
     const goal = await Goal.create(goalData);
@@ -1290,7 +1290,7 @@ async function seedDatabase() {
         note: "Chain replacement, brake pads, oil change - overdue by 1000km",
         daysUntil: 12,
         savingsPlanNeeded: true,
-        createdAt: new Date("2024-11-20T09:15:00")
+        createdAt: new Date("2024-12-05T09:15:00")
       }
     ];
 
