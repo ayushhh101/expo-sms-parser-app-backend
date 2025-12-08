@@ -1,6 +1,57 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer'); // <--- ADDED
+const path = require('path');     // <--- ADDED
+const fs = require('fs');         // <--- ADDED
 const Transaction = require('../models/Transaction');
+
+
+// ==========================================
+// 1. MULTER CONFIGURATION (For Voice Uploads)
+// ==========================================
+const uploadDir = 'uploads/';
+// Create the uploads folder if it doesn't exist
+if (!fs.existsSync(uploadDir)){
+    fs.mkdirSync(uploadDir);
+}
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir); 
+  },
+  filename: function (req, file, cb) {
+    // Generates: voice_log_1732000000.m4a
+    const uniqueSuffix = Date.now();
+    cb(null, 'voice_log_' + uniqueSuffix + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// ==========================================
+// 2. VOICE LOG ROUTE (New)
+// ==========================================
+router.post('/voice-log', upload.single('file'), (req, res) => {
+    console.log("------------------------------------------------");
+    console.log("📞 HIT RECEIVED: Voice Log Endpoint");
+    
+    if (req.file) {
+        console.log("✅ FILE ARRIVED!");
+        console.log("   - Saved At:", req.file.path);
+        console.log("   - Size:", req.file.size);
+        console.log("👤 User ID:", req.body.userId);
+        
+        // TODO: In the future, send req.file.path to Python/AI here
+        
+        return res.json({ status: "success", message: "File received properly" });
+    } else {
+        console.log("❌ NO FILE DETECTED");
+        return res.status(400).json({ status: "error", message: "No file found" });
+    }
+});
+
+
+
 
 // Get all transactions for a user
 router.get('/user/:userId', async (req, res) => {
