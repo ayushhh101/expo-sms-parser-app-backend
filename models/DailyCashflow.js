@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const DailyCashflowSchema = new mongoose.Schema({
   userId: { type: String, ref: 'User', required: true, index: true },
-  date: { type: Date, required: true }, // Normalized to midnight
+  date: { type: Date, required: true }, 
   
   income: { type: Number, default: 0 },   
   expense: { type: Number, default: 0 },  
