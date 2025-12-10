@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const RiskPrediction = require('../models/RiskPrediction');
+const RiskAnalysis = require('../models/RiskAnalysis');
 
 // Get latest risk prediction for a user
 router.get('/latest/:userId', async (req, res) => {
@@ -304,6 +305,103 @@ router.delete('/cleanup/expired', async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Get comprehensive risk analysis for a user
+router.get('/analysis/:userId', async (req, res) => {
+  try {
+    const { month } = req.query;
+    
+    // Get the latest risk analysis
+    const riskAnalysis = await RiskAnalysis.getLatestAnalysis(req.params.userId, month);
+    
+    if (!riskAnalysis) {
+      return res.status(404).json({
+        success: false,
+        error: 'No risk analysis found for user'
+      });
+    }
+    
+    // Add computed fields
+    const response = {
+      ...riskAnalysis.toObject(),
+      overallRiskLevel: riskAnalysis.overallRiskLevel,
+      isCritical: riskAnalysis.isCriticalBalance(),
+      highSeverityRisks: riskAnalysis.getHighSeverityRisks()
+    };
+    
+    res.json({
+      success: true,
+      data: response
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Get risk analysis history for a user
+router.get('/analysis-history/:userId', async (req, res) => {
+  try {
+    const { limit = 10 } = req.query;
+    const history = await RiskAnalysis.getAnalysisHistory(
+      req.params.userId, 
+      parseInt(limit)
+    );
+    
+    res.json({
+      success: true,
+      data: {
+        history,
+        totalRecords: history.length
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// Create new risk analysis
+router.post('/analysis', async (req, res) => {
+  try {
+    const analysisData = {
+      ...req.body,
+      generatedAt: req.body.generatedAt || new Date()
+    };
+    
+    // Validate required fields
+    const requiredFields = [
+      'userId', 'month', 'balance_today_rupees', 
+      'current_spending_rupees', 'days_until_zero'
+    ];
+    
+    for (const field of requiredFields) {
+      if (analysisData[field] === undefined) {
+        return res.status(400).json({
+          success: false,
+          error: `${field} is required`
+        });
+      }
+    }
+    
+    const analysis = await RiskAnalysis.create(analysisData);
+    
+    res.status(201).json({
+      success: true,
+      message: 'Risk analysis created successfully',
+      data: analysis
+    });
+  } catch (error) {
+    res.status(400).json({
       success: false,
       error: error.message
     });

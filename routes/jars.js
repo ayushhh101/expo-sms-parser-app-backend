@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const SavingsJar = require('../models/SavingsJar');
 const Transaction = require('../models/Transaction'); 
 
-// --- 1. GET ALL JARS FOR USER ---
+// GET ALL JARS FOR USER 
 router.get('/:userId', async (req, res) => {
   try {
     const { userId } = req.params;
@@ -15,7 +15,7 @@ router.get('/:userId', async (req, res) => {
   }
 });
 
-// --- 2. CREATE NEW JAR (Unchanged) ---
+//  CREATE NEW JAR
 router.post('/', async (req, res) => {
   try {
     const { userId, title, target, deadline, icon, color, bg } = req.body;
@@ -34,25 +34,59 @@ router.post('/', async (req, res) => {
   }
 });
 
-// --- 3. DEPOSIT MONEY (SECURE VERSION) ---
+
+// --- 5. EDIT JAR ---
+router.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, target, deadline, icon, color, bg } = req.body;
+
+    // Use { new: true } to return the updated document
+    const updatedJar = await SavingsJar.findByIdAndUpdate(
+      id,
+      { title, target, deadline, icon, color, bg },
+      { new: true }
+    );
+
+    if (!updatedJar) {
+      return res.status(404).json({ success: false, message: "Jar not found" });
+    }
+
+    res.status(200).json({ success: true, data: updatedJar });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// delete jar
+router.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedJar = await SavingsJar.findByIdAndDelete(id);
+
+    if (!deletedJar) {
+      return res.status(404).json({ success: false, message: "Jar not found" });
+    }
+
+    res.status(200).json({ success: true, message: "Jar deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// deposit money
 router.post('/:id/deposit', async (req, res) => {
   try {
     const { id } = req.params;
-    const { amount, userId } = req.body; // 'amount' is in RUPEES
-    
+    const { amount, userId } = req.body;  
     if (!amount || amount <= 0) {
       return res.status(400).json({ success: false, message: "Invalid amount" });
     }
-
-    // A. Find the Jar
     const jar = await SavingsJar.findOne({ _id: id, userId });
     if (!jar) {
       return res.status(404).json({ success: false, message: "Jar not found" });
     }
 
-    // --- SAFETY CHECK START ---
-
-    // Note: Transactions are in PAISE, so we divide by 100
     const txStats = await Transaction.aggregate([
       { $match: { userId: userId } },
       {
@@ -67,7 +101,7 @@ router.post('/:id/deposit', async (req, res) => {
     const totalIncome = (txStats[0]?.earnings || 0) / 100; 
     const totalExpenses = (txStats[0]?.spending || 0) / 100;
 
-    // C. Calculate Total Already Locked in Jars
+    
     const jarStats = await SavingsJar.aggregate([
       { $match: { userId: userId } },
       { $group: { _id: null, totalSaved: { $sum: "$saved" } } }
@@ -79,16 +113,14 @@ router.post('/:id/deposit', async (req, res) => {
     if (amount > unallocatedCash) {
        return res.status(400).json({ 
          success: false, 
-         // Send the limit so the UI can show "You only have ₹500 left!"
          message: `Insufficient funds. You only have ₹${unallocatedCash} available.` 
        });
     }
-    // --- SAFETY CHECK END ---
     jar.saved += Number(amount);
     jar.transactions.push({ amount: Number(amount) });
     
     if (jar.saved >= jar.target) {
-      jar.status = 'completed'; // Optional: Auto-complete jar
+      jar.status = 'completed'; 
     }
 
     await jar.save();
@@ -96,7 +128,7 @@ router.post('/:id/deposit', async (req, res) => {
     res.status(200).json({ 
       success: true, 
       data: jar,
-      newUnallocated: unallocatedCash - amount // Send this back for instant UI update
+      newUnallocated: unallocatedCash - amount 
     });
 
   } catch (error) {
@@ -106,7 +138,6 @@ router.post('/:id/deposit', async (req, res) => {
 });
 
 // --- 4. GET MONTHLY SAVINGS STATS ---
-// Endpoint: GET /api/jars/:userId/stats
 router.get('/:userId/stats', async (req, res) => {
   try {
     const { userId } = req.params;
@@ -132,7 +163,7 @@ router.get('/:userId/stats', async (req, res) => {
       success: true, 
       data: {
         totalSavedThisMonth: total,
-        challengesCompleted: count // We can use deposit count as a proxy for "challenges" or streaks
+        challengesCompleted: count
       }
     });
 
