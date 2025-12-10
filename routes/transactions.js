@@ -6,6 +6,8 @@ const fs = require('fs');         // <--- ADDED
 const Transaction = require('../models/Transaction');
 const WeeklyBudget = require('../models/WeeklyBudget');
 const DailyCashflow = require('../models/DailyCashflow');
+const axios = require("axios");
+const FormData = require("form-data");
 
 
 // ==========================================
@@ -30,25 +32,51 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// ==========================================
-// 2. VOICE LOG ROUTE (New)
-// ==========================================
-router.post('/voice-log', upload.single('file'), (req, res) => {
-    console.log("------------------------------------------------");
-    console.log("📞 HIT RECEIVED: Voice Log Endpoint");
-    
-    if (req.file) {
-        console.log("✅ FILE ARRIVED!");
-        console.log("   - Saved At:", req.file.path);
-        console.log("   - Size:", req.file.size);
-        console.log("👤 User ID:", req.body.userId);
-        
-        // TODO: In the future, send req.file.path to Python/AI here
-        
-        return res.json({ status: "success", message: "File received properly" });
-    } else {
-        console.log("❌ NO FILE DETECTED");
-        return res.status(400).json({ status: "error", message: "No file found" });
+
+router.post('/voice-log', upload.single('file'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ status: "error", message: "No file found" });
+        }
+
+        const { userId, language } = req.body;
+
+        // 1) Create `meta` JSON exactly as FastAPI needs
+        const meta = JSON.stringify({
+            userId: userId,
+            timestamp: String(Date.now())
+        });
+
+        // 2) Prepare form-data (file + meta + lang)
+        const formData = new FormData();
+        formData.append("meta", meta);
+        formData.append("lang", language);
+        formData.append("audio", fs.createReadStream(req.file.path), {
+            filename: req.file.filename,
+            contentType: req.file.mimetype
+        });
+
+        // 3) Call FastAPI endpoint
+        const fastapiURL = "http://192.168.29.121:8000/api/speech_msg";
+
+        const fastapiResponse = await axios.post(fastapiURL, formData, {
+            headers: formData.getHeaders()
+        });
+
+        // 4) Return the processed result to frontend
+        return res.json({
+            status: "success",
+            fastapi: fastapiResponse.data
+        });
+
+    } catch (error) {
+        console.error("🔥 FastAPI error:", error?.response?.data || error.message);
+
+        return res.status(500).json({
+            status: "error",
+            message: "Failed to process speech",
+            details: error?.response?.data || error.message
+        });
     }
 });
 
