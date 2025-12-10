@@ -25,6 +25,7 @@ app.use('/api/challenges', require('./routes/challenges'));
 app.use('/api/risks', require('./routes/risks'));
 app.use('/api/weekly-budget', require('./routes/weeklyBudget'));
 app.use('/api/jars', require('./routes/jars'));
+app.use("/api/daily-challenges", require('./routes/dailyChallenges'));
 
 // Health check route
 app.get('/', (req, res) => {
