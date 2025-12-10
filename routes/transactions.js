@@ -5,6 +5,7 @@ const path = require('path');     // <--- ADDED
 const fs = require('fs');         // <--- ADDED
 const Transaction = require('../models/Transaction');
 const WeeklyBudget = require('../models/WeeklyBudget');
+const DailyCashflow = require('../models/DailyCashflow');
 
 
 // ==========================================
@@ -97,6 +98,11 @@ router.post('/', async (req, res) => {
     if (transaction.type === 'expense' && transaction.userId) {
       await updateWeeklyBudgetForTransaction(transaction);
     }
+
+    // update cashflow
+    if (transaction.userId) {
+      await updateDailyCashflow(transaction); 
+    }
     
     res.status(201).json({
       success: true,
@@ -147,6 +153,11 @@ router.post("/manual", async (req, res) => {
     // Auto-update weekly budget if it's an expense transaction
     if (saved.type === 'expense' && saved.userId) {
       await updateWeeklyBudgetForTransaction(saved);
+    }
+
+    // update cashflow
+    if (saved.userId) {
+      await updateDailyCashflow(saved); 
     }
     
     res.status(201).json({ ok: true, saved });
@@ -273,6 +284,55 @@ async function updateWeeklyBudgetForTransaction(transaction) {
   } catch (error) {
     console.error('Error updating weekly budget:', error);
     // Don't throw error to avoid breaking transaction creation
+  }
+}
+
+
+
+async function updateDailyCashflow(transaction) {
+  try {
+    const moment = require('moment');
+    
+    //  identify the Day
+    const dayStart = moment(transaction.timestamp).startOf('day').toDate();
+    const dayEnd = moment(transaction.timestamp).endOf('day').toDate();
+
+    // fetch transactions 
+    const transactions = await Transaction.find({
+      userId: transaction.userId,
+      timestamp: { $gte: dayStart, $lte: dayEnd }
+    });
+
+    // calculate Totals
+    let income = 0;
+    let expense = 0;
+
+    transactions.forEach(t => {
+      if (t.type === 'income') income += t.amountPaise;
+      if (t.type === 'expense') expense += t.amountPaise;
+    });
+
+    const net = income - expense;
+    const netRupees = net / 100;
+
+    //  status
+    let status = 'neutral';
+    if (income > 0 || expense > 0) {
+       if (netRupees >= 500) status = 'high_earning';       // Green
+       else if (netRupees <= -200) status = 'heavy_expense'; // Red
+       else status = 'balanced';                            // Yellow
+    }
+
+    // update schema
+    await DailyCashflow.findOneAndUpdate(
+      { userId: transaction.userId, date: dayStart },
+      { income, expense, net, status, lastUpdated: new Date() },
+      { upsert: true, new: true }
+    );
+    console.log(`🔥 Updated Heatmap for ${moment(dayStart).format('YYYY-MM-DD')}`);
+
+  } catch (error) {
+    console.error('Heatmap Update Error:', error);
   }
 }
 
