@@ -25,6 +25,7 @@ app.use('/api/challenges', require('./routes/challenges'));
 app.use('/api/risks', require('./routes/risks'));
 app.use('/api/weekly-budget', require('./routes/weeklyBudget'));
 app.use('/api/jars', require('./routes/jars'));
+app.use('/api/heatmap', require('./routes/heatmap'));
 
 // Health check route
 app.get('/', (req, res) => {
@@ -39,3 +40,8 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+// At the top with other requires
+
+
+// ... somewhere below with other app.use() calls ...
